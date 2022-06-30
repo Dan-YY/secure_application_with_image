@@ -94,6 +94,7 @@ class SecureApplicationController
 
   /// content under [SecureGate] will not be visible
   void lock() {
+    print('is locking');
     SecureApplicationNative.lock();
     if (!value.locked) {
       value = value.copyWith(locked: true);
@@ -108,6 +109,7 @@ class SecureApplicationController
 
   /// Use when you want your user to see content under [SecureGate]
   void unlock() {
+    print('is un-unlocking');
     SecureApplicationNative
         .unlock(); //lock from native is removed when resumed but why not!
     if (value.locked) {
@@ -144,6 +146,7 @@ class SecureApplicationController
   ///
   /// on Android this will also prevent scrensshot/screen recording
   void secure() {
+    print('secureed');
     SecureApplicationNative.secure();
     if (!value.secured) {
       value = value.copyWith(secured: true);
